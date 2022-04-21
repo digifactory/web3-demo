@@ -9,7 +9,7 @@ class GetNonceForSigningController
 {
     public function __invoke(Request $request)
     {
-        $nonce = Str::random(32);
+        $nonce = 'Loginverzoek DigiFactory - ' . Str::random(32);
 
         session()->put('nonce', $nonce);
 

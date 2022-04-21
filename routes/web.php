@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', \App\Http\Controllers\Auth\LoginController::class)->middleware(\App\Http\Middleware\RedirectIfAuthenticated::class);
+Route::get('/stemmen', \App\Http\Controllers\VoteController::class)->middleware(\Illuminate\Auth\Middleware\Authenticate::class);
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('nonce', \App\Http\Controllers\Auth\GetNonceForSigningController::class);
     Route::post('verify', \App\Http\Controllers\Auth\VerifySignatureAndAuthenticateUserController::class);
+    Route::post('logout', \App\Http\Controllers\Auth\LogoutController::class)->middleware(\Illuminate\Auth\Middleware\Authenticate::class)->name('logout');
 });

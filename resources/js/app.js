@@ -25,11 +25,6 @@ function toHex(s) {
         qrcodeModal: QRCodeModal,
     });
 
-    // Check if connection is already established, then prompt user to login (sign message)
-    if (connector.connected) {
-        login();
-    }
-
     // Subscribe to connect event
     connector.on("connect", (error, payload) => {
         if (error) {
@@ -40,9 +35,36 @@ function toHex(s) {
     });
 
     function startSession() {
-        if (!connector.connected) {
+        // Check if connection is already established, then prompt user to login (sign message)
+        if (connector.connected) {
+            login();
+        } else {
             connector.createSession();
         }
+    }
+
+    function showLoginScreen() {
+        document.getElementById('login-screen').classList.remove('d-none');
+    }
+
+    function hideLoginScreen() {
+        document.getElementById('login-screen').classList.add('d-none');
+    }
+
+    function showSignPromptScreen() {
+        document.getElementById('sign-prompt-screen').classList.remove('d-none');
+    }
+
+    function hideSignPromptScreen() {
+        document.getElementById('sign-prompt-screen').classList.add('d-none');
+    }
+
+    function showScanQrScreen() {
+        document.getElementById('scan-qr-screen').classList.remove('d-none');
+    }
+
+    function hideScanQrScreen() {
+        document.getElementById('scan-qr-screen').classList.add('d-none');
     }
 
     function login() {
@@ -56,6 +78,9 @@ function toHex(s) {
                 if (result.status === 200) {
                     const address = connector.accounts[0];
 
+                    showSignPromptScreen();
+                    hideLoginScreen();
+
                     connector
                         .signPersonalMessage([
                             '0x'+toHex(result.data.nonce),
@@ -68,7 +93,9 @@ function toHex(s) {
                                     signature,
                                 })
                                 .then((result) => {
-                                    console.log(result);
+                                    if (result.status === 200) {
+                                        window.location.reload();
+                                    }
                                 });
                         })
                         .catch((error) => {
