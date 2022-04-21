@@ -19,6 +19,9 @@
         "sass-loader": "^12.6.0"
     },
     "dependencies": {
+        "@walletconnect/client": "^1.7.7",
+        "@walletconnect/qrcode-modal": "^1.7.7",
+        "alpinejs": "^3.10.2",
         "bootstrap": "^5.1.3"
     }
 }

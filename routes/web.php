@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::get('nonce', \App\Http\Controllers\Auth\GetNonceForSigningController::class);
+    Route::post('verify', \App\Http\Controllers\Auth\VerifySignatureAndAuthenticateUserController::class);
+});
