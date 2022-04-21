@@ -67,6 +67,14 @@ function toHex(s) {
         document.getElementById('scan-qr-screen').classList.add('d-none');
     }
 
+    function showSignFailedScreen() {
+        document.getElementById('sign-failed-screen').classList.remove('d-none');
+    }
+
+    function hideSignFailedScreen() {
+        document.getElementById('sign-failed-screen').classList.add('d-none');
+    }
+
     function login() {
         if (! window.guest) {
             return;
@@ -80,6 +88,7 @@ function toHex(s) {
 
                     showSignPromptScreen();
                     hideLoginScreen();
+                    hideSignFailedScreen();
 
                     connector
                         .signPersonalMessage([
@@ -99,8 +108,8 @@ function toHex(s) {
                                 });
                         })
                         .catch((error) => {
-                            // Error returned when rejected
-                            console.error(error);
+                            hideSignPromptScreen();
+                            showSignFailedScreen();
                         });
                 }
             });

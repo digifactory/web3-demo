@@ -19,4 +19,12 @@
             <button onclick="walletConnectLogin.startSession()" class="btn btn-warning">Opnieuw proberen</button>
         </div>
     </div>
+    <div id="sign-failed-screen" class="d-none">
+        <div class="alert alert-danger">
+            <p class="mb-0">Ondertekenen geweigerd of mislukt, probeer het opnieuw.</p>
+        </div>
+        <div class="d-grid">
+            <button onclick="walletConnectLogin.startSession()" class="btn btn-warning">Opnieuw proberen</button>
+        </div>
+    </div>
 @endsection

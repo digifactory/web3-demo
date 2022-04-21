@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', \App\Http\Controllers\Auth\LoginController::class)->middleware(\App\Http\Middleware\RedirectIfAuthenticated::class);
 Route::get('/stemmen', \App\Http\Controllers\VoteController::class)->middleware(\Illuminate\Auth\Middleware\Authenticate::class);
+Route::post('/stem', \App\Http\Controllers\CastVoteController::class)->middleware(\Illuminate\Auth\Middleware\Authenticate::class)->name('castVote');
 
 Route::group(['prefix' => 'auth'], function () {
     Route::get('nonce', \App\Http\Controllers\Auth\GetNonceForSigningController::class);
