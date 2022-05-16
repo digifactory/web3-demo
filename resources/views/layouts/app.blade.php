@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="text-muted mt-4 text-center small">
-                        <p class="mb-1">Deze pagina hoort bij een <a href="#" target="_blank">blog</a> van <a href="https://www.digifactory.nl/" target="_blank">DigiFactory</a>.</p>
+                        <p class="mb-1">Deze pagina hoort bij een <a href="https://www.digifactory.nl/blog/web-30-en-de-kansen-van-blockchain" target="_blank">blog</a> van <a href="https://www.digifactory.nl/" target="_blank">DigiFactory</a>.</p>
                         <p class="m-0">De broncode is openbaar op <a href="https://github.com/digifactory/web3-demo" target="_blank">GitHub</a>.</p>
                     </div>
                 </div>
