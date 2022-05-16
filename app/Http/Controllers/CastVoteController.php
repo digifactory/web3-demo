@@ -26,5 +26,7 @@ class CastVoteController extends Controller
         $user->vote()->create([
             'employee_id' => $request->input('employee_id'),
         ]);
+
+        return redirect()->action([VoteController::class]);
     }
 }
